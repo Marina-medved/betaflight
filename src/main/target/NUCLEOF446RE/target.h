@@ -51,11 +51,8 @@
 #define USE_ACC_SPI_MPU6500
 #define USE_ACC_SPI_MPU9250
 
-#define MPU9250_CS_PIN PB12
-#define MPU9250_SPI_INSTANCE SPI2
-
-#define MPU6500_CS_PIN PB12
-#define MPU6500_SPI_INSTANCE SPI2
+#define GYRO_1_SPI_INSTANCE     SPI2
+#define GYRO_1_CS_PIN           PB12
 
 #define USE_EXTI
 
@@ -174,5 +171,5 @@
 #define TARGET_IO_PORTC (0xffff & ~(BIT(15)|BIT(14)|BIT(13)))
 #define TARGET_IO_PORTD BIT(2)
 
-#define USABLE_TIMER_CHANNEL_COUNT 12
-#define USED_TIMERS             (TIM_N(1) | TIM_N(2) | TIM_N(3) | TIM_N(4) | TIM_N(8) )
+#define USABLE_TIMER_CHANNEL_COUNT 8
+#define USED_TIMERS             (TIM_N(1) | TIM_N(2) | TIM_N(3) | TIM_N(8))

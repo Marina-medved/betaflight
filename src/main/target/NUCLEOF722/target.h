@@ -33,19 +33,23 @@
 //#define BEEPER_PIN PA0
 //#define BEEPER_INVERTED
 
+#undef USE_MULTI_GYRO
+
 #define USE_ACC
 #define USE_FAKE_ACC
 #define USE_ACC_MPU6050
-#define ACC_MPU6050_ALIGN CW270_DEG
+#define ACC_1_ALIGN       CW270_DEG
 
 #define USE_GYRO
 #define USE_FAKE_GYRO
 #define USE_GYRO_MPU6050
-#define GYRO_MPU6050_ALIGN CW270_DEG
+#define GYRO_1_ALIGN       CW270_DEG
 
 // MPU6050 interrupts
 #define USE_MPU_DATA_READY_SIGNAL
-#define MPU_INT_EXTI PB15
+#define USE_EXTI
+#define USE_GYRO_EXTI
+#define GYRO_1_EXTI_PIN PB15
 #define USE_EXTI
 
 #define USE_MAG
@@ -58,7 +62,7 @@
 #define USE_FAKE_BARO
 #define USE_BARO_MS5611
 
-#define USABLE_TIMER_CHANNEL_COUNT 11
+#define USABLE_TIMER_CHANNEL_COUNT 9
 
 #define USE_VCP
 #define USE_USB_DETECT
@@ -164,4 +168,4 @@
 #define TARGET_IO_PORTE 0xffff
 #define TARGET_IO_PORTF 0xffff
 
-#define USED_TIMERS  ( TIM_N(2) | TIM_N(3) | TIM_N(4) | TIM_N(5) | TIM_N(12) | TIM_N(8) | TIM_N(9) | TIM_N(10) | TIM_N(11))
+#define USED_TIMERS  ( TIM_N(2) | TIM_N(3) | TIM_N(4) | TIM_N(8) | TIM_N(9) | TIM_N(12) )

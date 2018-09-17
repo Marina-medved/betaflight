@@ -49,21 +49,19 @@
 
 // MPU6000 interrupts
 #define USE_EXTI
-#define MPU_INT_EXTI            PC4
+#define USE_GYRO_EXTI
+#define GYRO_1_EXTI_PIN         PC4
 #define USE_MPU_DATA_READY_SIGNAL
 
-#define MPU6000_CS_PIN          PA4
-#define MPU6000_SPI_INSTANCE    SPI1
+#define GYRO_1_CS_PIN           PA4
+#define GYRO_1_SPI_INSTANCE     SPI1
 
 #define USE_GYRO
 
 #define USE_GYRO_SPI_MPU6000
-#define GYRO_MPU6000_ALIGN      CW180_DEG
+#define GYRO_1_ALIGN            CW180_DEG
 #define USE_ACC_SPI_MPU6000
-#define ACC_MPU6000_ALIGN       CW180_DEG
-
-#define USE_ACC_SPI_MPU6000
-#define ACC_MPU6000_ALIGN       CW180_DEG
+#define ACC_1_ALIGN             CW180_DEG
 
 #if defined(KIWIF4) || defined(KIWIF4V2)
 #define USE_MAX7456
@@ -182,6 +180,6 @@
 #define TARGET_IO_PORTC         0xffff
 #define TARGET_IO_PORTD         (BIT(2))
 
-#define USABLE_TIMER_CHANNEL_COUNT 12
+#define USABLE_TIMER_CHANNEL_COUNT 5
 
-#define USED_TIMERS             ( TIM_N(2) | TIM_N(3) | TIM_N(5) | TIM_N(8) | TIM_N(9) )
+#define USED_TIMERS             ( TIM_N(2) | TIM_N(3) | TIM_N(4) )

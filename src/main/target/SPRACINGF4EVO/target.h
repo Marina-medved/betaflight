@@ -27,7 +27,7 @@
 #define SPRACINGF4EVO_REV 2
 #endif
 #ifdef SPRACINGF4EVODG
-#define USE_DUAL_GYRO
+#define USE_MULTI_GYRO
 #endif
 
 #define USBD_PRODUCT_STRING     "SP Racing F4 EVO"
@@ -42,7 +42,7 @@
 
 #define USE_EXTI
 #define GYRO_1_EXTI_PIN         PC13
-#ifdef USE_DUAL_GYRO
+#ifdef USE_MULTI_GYRO
 #define GYRO_2_EXTI_PIN         PC5 // GYRO 2 / NC on prototype boards, but if it was it'd be here.
 #endif
 #define MPU_INT_EXTI
@@ -62,20 +62,14 @@
 #define USE_ACC
 #define USE_ACC_SPI_MPU6500
 
-#ifndef USE_DUAL_GYRO
-#define ACC_MPU6500_ALIGN           CW0_DEG
-#define GYRO_MPU6500_ALIGN          CW0_DEG
+#ifndef USE_MULTI_GYRO
+#define ACC_1_ALIGN                 CW0_DEG
+#define GYRO_1_ALIGN                CW0_DEG
 #else
-#define ACC_MPU6500_1_ALIGN         CW0_DEG
-#define GYRO_MPU6500_1_ALIGN        CW0_DEG
-
-#define ACC_MPU6500_2_ALIGN         CW0_DEG
-#define GYRO_MPU6500_2_ALIGN        CW0_DEG
-
-#define GYRO_1_ALIGN                GYRO_MPU6500_1_ALIGN
-#define GYRO_2_ALIGN                GYRO_MPU6500_2_ALIGN
-#define ACC_1_ALIGN                 ACC_MPU6500_1_ALIGN
-#define ACC_2_ALIGN                 ACC_MPU6500_2_ALIGN
+#define GYRO_1_ALIGN                CW0_DEG
+#define GYRO_2_ALIGN                CW0_DEG
+#define ACC_1_ALIGN                 CW0_DEG
+#define ACC_2_ALIGN                 CW0_DEG
 #endif
 
 #define USE_BARO
@@ -167,9 +161,9 @@
 #define SDCARD_DMA_CHANNEL_TX               DMA1_Stream4
 #define SDCARD_DMA_CHANNEL                  0
 
-#ifndef USE_DUAL_GYRO
-#define MPU6500_CS_PIN          SPI1_NSS_PIN
-#define MPU6500_SPI_INSTANCE    SPI1
+#ifndef USE_MULTI_GYRO
+#define GYRO_1_CS_PIN           SPI1_NSS_PIN
+#define GYRO_1_SPI_INSTANCE     SPI1
 #else
 #define GYRO_1_CS_PIN           SPI1_NSS_PIN
 #define GYRO_1_SPI_INSTANCE     SPI1
@@ -218,14 +212,10 @@
 #define TARGET_IO_PORTD         (BIT(2))
 
 #define USABLE_TIMER_CHANNEL_COUNT 16 // 4xPWM, 8xESC, 2xESC via UART3 RX/TX, 1xLED Strip, 1xIR.
-#if (SPRACINGF4NEO_REV >= 2)
+#if (SPRACINGF4EVO_REV >= 2)
 #define USED_TIMERS  (TIM_N(1) | TIM_N(2) | TIM_N(3) | TIM_N(4) | TIM_N(8) | TIM_N(9))
 #else
 #define USE_TIM10_TIM11_FOR_MOTORS
-#ifdef USE_TIM10_TIM11_FOR_MOTORS
 #define USED_TIMERS  (TIM_N(1) | TIM_N(2) | TIM_N(3) | TIM_N(4) | TIM_N(8) | TIM_N(9) | TIM_N(10) | TIM_N(11))
-#else
-#define USED_TIMERS  (TIM_N(1) | TIM_N(2) | TIM_N(3) | TIM_N(4) | TIM_N(8) | TIM_N(9))
-#endif
 #endif
 

@@ -47,22 +47,21 @@
 
 // MPU6500 interrupt
 #define USE_EXTI
-#define MPU_INT_EXTI            PC5
+#define USE_GYRO_EXTI
+#define GYRO_1_EXTI_PIN         PC5
 #define USE_MPU_DATA_READY_SIGNAL
 //#define DEBUG_MPU_DATA_READY_INTERRUPT
 
-#define MPU6500_CS_PIN          PC4
-#define MPU6500_SPI_INSTANCE    SPI1
+#define GYRO_1_CS_PIN           PC4
+#define GYRO_1_SPI_INSTANCE     SPI1
 
 #define USE_ACC
-#define USE_ACC_MPU6500
 #define USE_ACC_SPI_MPU6500
-#define ACC_MPU6500_ALIGN       CW0_DEG
+#define ACC_1_ALIGN             CW0_DEG
 
 #define USE_GYRO
-#define USE_GYRO_MPU6500
 #define USE_GYRO_SPI_MPU6500
-#define GYRO_MPU6500_ALIGN      CW0_DEG
+#define GYRO_1_ALIGN            CW0_DEG
 
 #define USE_MAG
 #define USE_MAG_HMC5883
@@ -175,4 +174,4 @@
 #define TARGET_IO_PORTD             (BIT(2))
 
 #define USABLE_TIMER_CHANNEL_COUNT     8
-#define USED_TIMERS                   ( TIM_N(2) | TIM_N(3) | TIM_N(5) | TIM_N(8) | TIM_N(9) )
+#define USED_TIMERS                   ( TIM_N(1) | TIM_N(2) | TIM_N(3) | TIM_N(5) | TIM_N(8) )
